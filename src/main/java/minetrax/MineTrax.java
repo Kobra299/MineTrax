@@ -27,6 +27,7 @@ public class MineTrax {
     @PreInit
     public void PreInit(FMLPreInitializationEvent event) throws IOException {
         ClientProxyMineTrax.registerSoundEvents();
+        MinecraftForgeClient.preloadTexture("/MineTrax/gfx/discs.png");
         Config();
         
     }
