@@ -1,5 +1,10 @@
 apply plugin: 'java'
 
+buildDir = new File('build')
+classesDir = new File('build/classes')
+libDir = new File('build/lib')
+distDir = new File('dist')
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'MineTrax'
