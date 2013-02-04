@@ -4,6 +4,8 @@ package minetrax;
 import net.minecraft.item.Item;
 
 public class MineTraxItems {
-//TODO: ????
-    //public static Item recordA = new ItemMineTraxRecord(DataProxyMineTrax.recordA_ID, "Record").setIconCoord(7, 11).setItemName("Music?!?");
+// Add Items here
+	public static void init() {
+		// Add anything else here, language registry, game registry etc.
+	}
 }
