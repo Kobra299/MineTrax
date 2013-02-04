@@ -5,4 +5,5 @@ public class DataProxyMineTrax {
 //TODO: ????
 
     public static String currentAlbum;
+    public static int discStartID;
 }

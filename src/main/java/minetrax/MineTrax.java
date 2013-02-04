@@ -12,6 +12,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import java.io.File;
 import java.io.IOException;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.Configuration;
 
 @Mod(modid = "mMineTrax", name = "MineTrax", version = "1.0")
@@ -26,13 +27,15 @@ public class MineTrax {
     @PreInit
     public void PreInit(FMLPreInitializationEvent event) throws IOException {
         ClientProxyMineTrax.registerSoundEvents();
+        MinecraftForgeClient.preloadTexture("/MineTrax/gfx/discs.png");
         Config();
-        MineTraxAlbumMaker.DoStuffs();
+        
     }
 
     @Init
-    public void load(FMLInitializationEvent event) {
+    public void load(FMLInitializationEvent event) throws IOException {
         CommonProxyMineTrax.registerRenderThings();
+        MineTraxAlbumMaker.DoStuffs();
     }
 
     @PostInit
@@ -43,9 +46,9 @@ public class MineTrax {
         Configuration config = new Configuration(new File("config/MineTrax.cfg"));
 
         config.load();
-        //Items
-        //TODO: Get rid of this... it was just for testing if the mod was working right when it was just started.
-      
+        //IDs Stuffs        
+        DataProxyMineTrax.discStartID = Integer.parseInt(config.get("General", "DiscStartID", 14000).value);
+        //AlbumStuffs  
         DataProxyMineTrax.currentAlbum = config.get("General", "CurrentAlbum", "albumex").value;
         config.save();
 
