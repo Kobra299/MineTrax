@@ -21,14 +21,19 @@ public class ItemMineTraxRecord extends ItemRecord {
     /**
      * The name of the record.
      */
-    public final String recordName;
+    public final String recordFileName;
+    public final String SongAuthor;
+    public final String SongTitle;
 
-    protected ItemMineTraxRecord(int par1, String par2Str) {
-        super(par1, par2Str);
-        this.recordName = par2Str;
+    protected ItemMineTraxRecord(int par1, String recordFileName, String SongAuthor, String SongTitle) {
+        super(par1, recordFileName);
+        this.recordFileName = recordFileName;
         this.maxStackSize = 1;
+        this.SongAuthor = SongAuthor;
+        this.SongTitle = SongTitle;
         this.setCreativeTab(CreativeTabs.tabMisc);
-        records.put(par2Str, this);
+        records.put(recordFileName, this);
+        
     }
 
     @SideOnly(Side.CLIENT)
@@ -43,9 +48,13 @@ public class ItemMineTraxRecord extends ItemRecord {
      */
     @Override
     public String getRecordTitle() {
-        return "??? - " + this.recordName;
+        return this.SongAuthor + " - " + this.SongTitle;
     }
 
+    @Override
+    public String getTextureFile() {
+        return "/MineTrax/gfx/discs.png";
+    }
     @SideOnly(Side.CLIENT)
     /**
      * Return an item rarity from EnumRarity
