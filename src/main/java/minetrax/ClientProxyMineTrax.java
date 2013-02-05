@@ -7,6 +7,7 @@ import net.minecraftforge.common.MinecraftForge;
 public class ClientProxyMineTrax extends CommonProxyMineTrax {
 
     public static void registerRenderThings() {
+        MinecraftForgeClient.preloadTexture("minetrax/gfx/items.png");
     }
 
     public static void registerSoundEvents() {

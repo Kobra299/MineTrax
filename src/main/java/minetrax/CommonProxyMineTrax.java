@@ -4,7 +4,7 @@ package minetrax;
 public class CommonProxyMineTrax {
 
     public static void registerRenderThings() {
-        MinecraftForgeClient.preloadTexture("minetrax/gfx/items.png");
+        //I am stupid at times. - Flaeme
     }
 
     public static void registerSoundEvents() {
