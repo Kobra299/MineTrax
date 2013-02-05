@@ -33,7 +33,7 @@ public class ItemMineTraxRecord extends ItemRecord {
         this.SongTitle = SongTitle;
         this.setCreativeTab(CreativeTabs.tabMisc);
         records.put(recordFileName, this);
-        
+
     }
 
     @SideOnly(Side.CLIENT)
@@ -55,6 +55,7 @@ public class ItemMineTraxRecord extends ItemRecord {
     public String getTextureFile() {
         return "/minetrax/gfx/discs.png";
     }
+
     @SideOnly(Side.CLIENT)
     /**
      * Return an item rarity from EnumRarity

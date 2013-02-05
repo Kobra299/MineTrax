@@ -28,7 +28,7 @@ public class MineTrax {
     public void PreInit(FMLPreInitializationEvent event) throws IOException {
         ClientProxyMineTrax.registerSoundEvents();
         Config();
-        
+
     }
 
     @Init
