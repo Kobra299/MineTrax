@@ -53,7 +53,7 @@ public class ItemMineTraxRecord extends ItemRecord {
 
     @Override
     public String getTextureFile() {
-        return "/MineTrax/gfx/discs.png";
+        return "/minetrax/gfx/discs.png";
     }
     @SideOnly(Side.CLIENT)
     /**
