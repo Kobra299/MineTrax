@@ -6,7 +6,5 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class MineTraxLangRegistry {
 
     public void registerLanguageStuffs() {
-        //TODO: ????
-        //LanguageRegistry.addName(MineTraxItems.recordA, "Record A");
     }
 }

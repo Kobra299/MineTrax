@@ -51,9 +51,9 @@ public final class MineTraxAlbumMaker {
 
             newDisc = new ItemMineTraxRecord(discID, SongFilename, SongAuthor, SongTitle).setIconIndex(1).setItemName("MusicDisc" + int2strCurDisc);
 
-             GameRegistry.registerItem(newDisc, "MusicDisc" + int2strCurDisc);
-             LanguageRegistry.addName(newDisc, "Music Disc");
-            
+            GameRegistry.registerItem(newDisc, "MusicDisc" + int2strCurDisc);
+            LanguageRegistry.addName(newDisc, "Music Disc");
+
 
 //            System.out.println("Element " + curDisc + ": " + arrayDisc[curDisc]);
 

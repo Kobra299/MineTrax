@@ -12,6 +12,6 @@ public class ClientProxyMineTrax extends CommonProxyMineTrax {
 
     public static void registerSoundEvents() {
         MinecraftForge.EVENT_BUS.register(new SoundEvent());
-MinecraftForgeClient.preloadTexture("MineTrax/gfx/discs.png");
+        MinecraftForgeClient.preloadTexture("MineTrax/gfx/discs.png");
     }
 }
