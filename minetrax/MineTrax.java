@@ -36,6 +36,8 @@ public class MineTrax {
     public void load(FMLInitializationEvent event) throws IOException {
         CommonProxyMineTrax.registerRenderThings();
         MineTraxAlbumMaker.DoStuffs();
+        MineTraxItems.init();
+        MineTraxBlocks.init();
     }
 
     @PostInit
