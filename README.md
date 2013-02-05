@@ -13,4 +13,5 @@ LET THE GAME RUN ONCE TO CREATE THE ALBUM AND THE MOD'S CONFIG FILE
     I:SongGFXID=1
     S:SongTitle=Haggstrom
 
+Everything supports spaces in the names!
 -Moo
