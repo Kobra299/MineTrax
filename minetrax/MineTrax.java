@@ -30,8 +30,7 @@ public class MineTrax
     public void preInit(FMLPreInitializationEvent event) throws IOException
     {
         ClientProxyMineTrax.registerSoundEvents();
-        configFile = new Configuration(new File("config/MineTrax.cfg"));
-        configFile.load();
+        configFile = new Configuration(event.getSugestedConfig());
         loadConfig(configFile);
     }
 
@@ -46,6 +45,7 @@ public class MineTrax
 
     public void loadConfig(Configuration configFile)
     {
+        configFile.load();
         //IDs Stuffs
         DataProxyMineTrax.discStartID = Integer.parseInt(configFile.get("General", "DiscStartID", 14000).value);
         //AlbumStuffs
