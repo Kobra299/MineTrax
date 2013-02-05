@@ -3,10 +3,12 @@ package minetrax;
 
 import net.minecraft.item.Item;
 
-public class MineTraxItems {
-// Add Items here
+public class MineTraxItems
+{
+	// Add Items here
 
-    public static void init() {
+    public static void init()
+    {
         // Add anything else here, language registry, game registry etc.
     }
 }

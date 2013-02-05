@@ -3,8 +3,10 @@ package minetrax;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-public class MineTraxLangRegistry {
-
-    public void registerLanguageStuffs() {
+public class MineTraxLangRegistry
+{
+    public void registerLanguageItems()
+    {
+    	//register language items
     }
 }
