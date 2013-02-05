@@ -9,57 +9,45 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 
-public final class MineTraxAlbumMaker {
+public final class MineTraxAlbumMaker
+{
 
     public int numberOfDiscs;
     int arrayDisc[];
-
-    public MineTraxAlbumMaker() {
-    }
-
-    public void DoStuffs() throws IOException {
-
-        makeAlbum();
-    }
     public static Item newDisc;
-    public String SongAuthor;
-    public String SongTitle;
-    public String SongFilename;
-    public int SongGFXID;
-    public String int2strCurDisc;
+    public String songAuthor;
+    public String songTitle;
+    public String songFilename;
+    public int songGFXID;
 
-    public void makeAlbum() throws IOException {
-//TODO: SongAuthor, SongTitle, SongFilename, lots of stuffs! (?)
-        Configuration config = new Configuration(new File("albums/" + DataProxyMineTrax.currentAlbum + ".cfg"));
-
-
-        config.load();
-
+    /**
+     * Loads the albums
+     * Notes:
+     *    This method will forever be named doStuffs in memory of DarkSnake's
+     *    old conventions that were riddled through this mod.
+     * @param config
+     * @throws IOException
+     */
+    public void doStuffs(Configuration config) throws IOException
+    {
         numberOfDiscs = Integer.parseInt(config.get("General", "NumberOfDiscs", 10).value);
 
         arrayDisc = new int[numberOfDiscs];
-        for (int curDisc = 0; curDisc < arrayDisc.length; curDisc++) {
+        for (int curDisc = 0; curDisc < arrayDisc.length; curDisc++)
+        {
             arrayDisc[curDisc] = curDisc;
             int discID = arrayDisc[curDisc] + DataProxyMineTrax.discStartID;
-            int2strCurDisc = Integer.toString(curDisc);
-            SongAuthor = config.get(int2strCurDisc, "SongAuthor", "None").value;
-            SongTitle = config.get(int2strCurDisc, "SongTitle", "None").value;
-            SongFilename = config.get(int2strCurDisc, "SongFilename", "None").value;
-            SongGFXID = Integer.parseInt(config.get(int2strCurDisc, "SongGFXID", 1).value);
+            String curDiscStr = Integer.toString(curDisc);
+            songAuthor = config.get(curDiscStr, "SongAuthor", "None").value;
+            songTitle = config.get(curDiscStr, "SongTitle", "None").value;
+            songFilename = config.get(curDiscStr, "SongFilename", "None").value;
+            songGFXID = Integer.parseInt(config.get(curDiscStr, "SongGFXID", 1).value);
 
-
-
-            newDisc = new ItemMineTraxRecord(discID, SongFilename, SongAuthor, SongTitle).setIconIndex(1).setItemName("MusicDisc" + int2strCurDisc);
-
-            GameRegistry.registerItem(newDisc, "MusicDisc" + int2strCurDisc);
+            newDisc = new ItemMineTraxRecord(discID, songFilename, songAuthor, songTitle).setIconIndex(1).setItemName("MusicDisc" + curDisc);
+            GameRegistry.registerItem(newDisc, "MusicDisc" + curDiscStr);
             LanguageRegistry.addName(newDisc, "Music Disc");
-
-
-//            System.out.println("Element " + curDisc + ": " + arrayDisc[curDisc]);
-
         }
-
-
+        
         config.save();
     }
 }

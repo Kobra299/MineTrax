@@ -12,64 +12,71 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
 
-public class ItemMineTraxRecord extends ItemRecord {
+public class ItemMineTraxRecord extends ItemRecord
+{
 
     /**
      * List of all record items and their names.
      */
-    private static final Map records = new HashMap();
+    private static final Map<String, ItemMineTraxRecord> recordMap = new HashMap<String, ItemMineTraxRecord>();
+    
     /**
      * The name of the record.
      */
     public final String recordFileName;
-    public final String SongAuthor;
-    public final String SongTitle;
+    public final String songAuthor;
+    public final String songTitle;
 
-    protected ItemMineTraxRecord(int par1, String recordFileName, String SongAuthor, String SongTitle) {
+    protected ItemMineTraxRecord(int par1, String recordFileName, String songAuthor, String songTitle)
+    {
         super(par1, recordFileName);
         this.recordFileName = recordFileName;
         this.maxStackSize = 1;
-        this.SongAuthor = SongAuthor;
-        this.SongTitle = SongTitle;
+        this.songAuthor = songAuthor;
+        this.songTitle = songTitle;
         this.setCreativeTab(CreativeTabs.tabMisc);
-        records.put(recordFileName, this);
-
+        recordMap.put(recordFileName, this);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
+    {
         par3List.add(this.getRecordTitle());
     }
 
-    @SideOnly(Side.CLIENT)
     /**
      * Return the title for this record.
      */
+    @SideOnly(Side.CLIENT)
     @Override
-    public String getRecordTitle() {
-        return this.SongAuthor + " - " + this.SongTitle;
+    public String getRecordTitle()
+    {
+        return this.songAuthor + " - " + this.songTitle;
     }
 
     @Override
-    public String getTextureFile() {
+    public String getTextureFile()
+    {
         return "/minetrax/gfx/discs.png";
     }
 
-    @SideOnly(Side.CLIENT)
     /**
      * Return an item rarity from EnumRarity
      */
+    @SideOnly(Side.CLIENT)
     @Override
-    public EnumRarity getRarity(ItemStack par1ItemStack) {
+    public EnumRarity getRarity(ItemStack par1ItemStack)
+    {
         return EnumRarity.rare;
     }
 
-    @SideOnly(Side.CLIENT)
     /**
      * Return the record item corresponding to the given name.
      */
-    public static ItemRecord getRecord(String par0Str) {
-        return (ItemRecord) records.get(par0Str);
+    @SideOnly(Side.CLIENT)
+    public static ItemRecord getRecord(String par0Str)
+    {
+        return (ItemRecord) recordMap.get(par0Str);
     }
 }

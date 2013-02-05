@@ -17,41 +17,39 @@ import net.minecraftforge.common.Configuration;
 
 @Mod(modid = "mMineTrax", name = "MineTrax", version = "1.0")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-public class MineTrax {
-
+public class MineTrax
+{
     @SidedProxy(clientSide = "minetrax.ClientProxyMineTrax", serverSide = "minetrax.CommonProxyMineTrax")
     public static ClientProxyMineTrax proxyClient = new ClientProxyMineTrax();
     public static CommonProxyMineTrax proxyCommon = new CommonProxyMineTrax();
-    public static MineTraxAlbumMaker MineTraxAlbumMaker = new MineTraxAlbumMaker();
+    public static MineTraxAlbumMaker mineTraxAlbumMaker = new MineTraxAlbumMaker();
+    
+    public Configuration configFile;
 
     @PreInit
-    public void PreInit(FMLPreInitializationEvent event) throws IOException {
+    public void preInit(FMLPreInitializationEvent event) throws IOException
+    {
         ClientProxyMineTrax.registerSoundEvents();
-        Config();
-
+        configFile = new Configuration(new File("config/MineTrax.cfg"));
+        configFile.load();
+        loadConfig(configFile);
     }
 
     @Init
-    public void load(FMLInitializationEvent event) throws IOException {
+    public void load(FMLInitializationEvent event) throws IOException
+    {
         CommonProxyMineTrax.registerRenderThings();
-        MineTraxAlbumMaker.DoStuffs();
+        mineTraxAlbumMaker.doStuffs(configFile);
         MineTraxItems.init();
         MineTraxBlocks.init();
     }
 
-    @PostInit
-    public void PostInitialization(FMLPostInitializationEvent event) {
-    }
-
-    public void Config() {
-        Configuration config = new Configuration(new File("config/MineTrax.cfg"));
-
-        config.load();
-        //IDs Stuffs        
-        DataProxyMineTrax.discStartID = Integer.parseInt(config.get("General", "DiscStartID", 14000).value);
-        //AlbumStuffs  
-        DataProxyMineTrax.currentAlbum = config.get("General", "CurrentAlbum", "albumex").value;
-        config.save();
-
+    public void loadConfig(Configuration configFile)
+    {
+        //IDs Stuffs
+        DataProxyMineTrax.discStartID = Integer.parseInt(configFile.get("General", "DiscStartID", 14000).value);
+        //AlbumStuffs
+        DataProxyMineTrax.currentAlbum = configFile.get("General", "CurrentAlbum", "albumex").value;
+        configFile.save();
     }
 }
