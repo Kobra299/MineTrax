@@ -29,11 +29,18 @@ public class MineTrax {
     }
 
     @Init
-    public void load(FMLInitializationEvent event) throws IOException {
-        proxyCommon.registerEverything();
-        mineTraxAlbumMaker.doStuffs();
+    public void init(FMLInitializationEvent event) throws IOException
+    {
+        CommonProxyMineTrax.registerRenderThings();
+        mineTraxAlbumMaker.doStuffs(configFile); //TODO: Rename to init as well?
         MineTraxItems.init();
         MineTraxBlocks.init();
+    }
+    
+    @PostInit
+    public void postInit(FMLPostInitializationEvent event) throws IOException
+    {
+        //TODO: Things
     }
 
     public void parseConfig(FMLInitializationEvent event)
