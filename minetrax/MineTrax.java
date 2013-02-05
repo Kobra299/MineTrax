@@ -22,13 +22,10 @@ public class MineTrax {
     public Configuration configFile;
 
     @PreInit
-    public void preInit(FMLPreInitializationEvent event) throws IOException {
-
-        configFile = new Configuration(new File("config/MineTrax.cfg"));
-        configFile.load();
-        writeAndSaveConfig(configFile);
-
-
+    public void preInit(FMLPreInitializationEvent event) throws IOException
+    {
+        ClientProxyMineTrax.registerSoundEvents();
+        parseConfig(event);
     }
 
     @Init
@@ -39,9 +36,13 @@ public class MineTrax {
         MineTraxBlocks.init();
     }
 
-    public void writeAndSaveConfig(Configuration configFile) {
+    public void parseConfig(FMLInitializationEvent event)
+    {
+        configFile = new Configuration(event.getSugestedConfig());
+        configFile.load();
         //IDs Stuffs
-        DataProxyMineTrax.discStartID = Integer.parseInt(configFile.get("General", "DiscStartID", 15000).value);
+        DataProxyMineTrax.discStartID = Integer.parseInt(configFile.get("Item", "Disc Start ID", 15001).value);
+        DataProxyMineTrax.blankDiscID = Integer.parseInt(configFile.get("Item", "Blank Disc ID", 15000).value);
         //AlbumStuffs
         DataProxyMineTrax.currentAlbum = configFile.get("General", "CurrentAlbum", "albumex").value;
         configFile.save();
