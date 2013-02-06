@@ -11,7 +11,8 @@ public class ClientProxyMineTrax extends CommonProxyMineTrax {
      * *
      * Does everything here, cleaner Main class.
      */
-    public static void registerEverything() {
+    @Override
+    public void registerEverything() {
         registerSoundEvents();
         registerRenderStuffs();
     }
@@ -20,7 +21,8 @@ public class ClientProxyMineTrax extends CommonProxyMineTrax {
      * *
      * Register the sound events
      */
-    public static void registerSoundEvents() {
+    @Override
+    public void registerSoundEvents() {
         MinecraftForge.EVENT_BUS.register(new SoundEvent());
 
     }
@@ -29,7 +31,8 @@ public class ClientProxyMineTrax extends CommonProxyMineTrax {
      * *
      * Register the rendering
      */
-    public static void registerRenderStuffs() {
+    @Override
+    public void registerRenderStuffs() {
         MinecraftForgeClient.preloadTexture("MineTrax/gfx/discs.png");
     }
 }

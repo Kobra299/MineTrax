@@ -16,18 +16,15 @@ import net.minecraftforge.common.Configuration;
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class MineTrax {
 
-    @SidedProxy(clientSide = "minetrax.ClientProxyMineTrax", serverSide = "minetrax.CommonProxyMineTrax")
-    public static ClientProxyMineTrax proxyClient = new ClientProxyMineTrax();
-    public static CommonProxyMineTrax proxyCommon = new CommonProxyMineTrax();
+    @SidedProxy(clientSide = "minetrax.ClientProxyMineTrax", serverSide = "minetrax.CommonProxyMineTrax") //Those proxies... *rages*
+    public static CommonProxyMineTrax proxyCommon;
     public static MineTraxAlbumMaker mineTraxAlbumMaker = new MineTraxAlbumMaker();
     public Configuration configFile;
     public Configuration albumConfigFile;
 
     @PreInit
     public void preInit(FMLPreInitializationEvent event) throws IOException {
-        ClientProxyMineTrax.registerEverything();
-        ClientProxyMineTrax.registerSoundEvents();
-        ClientProxyMineTrax.registerRenderStuffs();
+
         configFile = new Configuration(new File("config/MineTrax.cfg"));
         configFile.load();
         loadConfig(configFile);
@@ -39,7 +36,7 @@ public class MineTrax {
 
     @Init
     public void load(FMLInitializationEvent event) throws IOException {
-        //CommonProxyMineTrax.registerRenderStuffs(); //Is this even needed? lol
+        proxyCommon.registerEverything();
         mineTraxAlbumMaker.doStuffs(albumConfigFile);
         MineTraxItems.init();
         MineTraxBlocks.init();
@@ -47,10 +44,9 @@ public class MineTrax {
 
     public void loadConfig(Configuration configFile) {
         //IDs Stuffs
-        DataProxyMineTrax.discStartID = Integer.parseInt(configFile.get("General", "DiscStartID", 14000).value);
+        DataProxyMineTrax.discStartID = Integer.parseInt(configFile.get("General", "DiscStartID", 15000).value);
         //AlbumStuffs
         DataProxyMineTrax.currentAlbum = configFile.get("General", "CurrentAlbum", "albumex").value;
-        //numberOfDiscs = Integer.parseInt(config.get("General", "NumberOfDiscs", 10).value);
         configFile.save();
     }
 }

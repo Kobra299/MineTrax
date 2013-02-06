@@ -7,20 +7,20 @@ public class CommonProxyMineTrax {
      * *
      * Does everything here, cleaner Main class.
      */
-    public static void registerEverything() {
+    public void registerEverything() {
     }
 
     /**
      * *
      * Register the rendering
      */
-    public static void registerRenderStuffs() { //It's official, Stuffs is an acceptable convention! Thanks for the inspiration, Dinnerbone <3
+    public void registerRenderStuffs() { //It's official, Stuffs is an acceptable convention! Thanks for the inspiration, Dinnerbone <3
     }
 
     /**
      * *
      * Register the sound events
      */
-    public static void registerSoundEvents() {
+    public void registerSoundEvents() {
     }
 }
