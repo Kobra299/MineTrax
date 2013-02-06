@@ -9,10 +9,13 @@ PUT SONGS IN OGG FORMAT IN \resources\mod\streaming !!
 LET THE GAME RUN ONCE TO CREATE THE ALBUM AND THE MOD'S CONFIG FILE
 
 /config/MineTrax_album.cfg:
+
+0 {
     S:SongAuthor=C418
     S:SongFilename=hal3
     I:SongGFXID=1
     S:SongTitle=Haggstrom
+}
 
 In the "general" part of the config, you can add or remove discs w/ numberOfDiscs=
 
