@@ -5,11 +5,16 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import java.io.File;
 import java.io.IOException;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 public final class MineTraxAlbumMaker {
 
@@ -29,6 +34,7 @@ public final class MineTraxAlbumMaker {
      *
      * @throws IOException
      */
+    @ForgeSubscribe
     public void doStuffs() throws IOException {
         albumConfigFile = new Configuration(new File("config/MineTrax_album.cfg"));
         albumConfigFile.load();
@@ -46,6 +52,8 @@ public final class MineTraxAlbumMaker {
             songGFXID = Integer.parseInt(albumConfigFile.get(curDiscStr, "SongGFXID", 1).value);
 
             newDisc = new ItemMineTraxRecord(discID, songFilename, songAuthor, songTitle).setIconIndex(1).setItemName("MusicDisc" + curDisc).setMaxStackSize(64).setFull3D();
+
+
             chestGenStuffs.registerChestGenHooks(newDisc, 0, 2, 5);
             GameRegistry.registerItem(newDisc, "MusicDisc" + curDiscStr);
             LanguageRegistry.addName(newDisc, "Music Disc");
