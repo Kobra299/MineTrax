@@ -51,7 +51,7 @@ public final class MineTraxAlbumMaker {
             songFilename = albumConfigFile.get(curDiscStr, "SongFilename", "None").value;
             songGFXID = Integer.parseInt(albumConfigFile.get(curDiscStr, "SongGFXID", 1).value);
 
-            newDisc = new ItemMineTraxRecord(discID, songFilename, songAuthor, songTitle).setIconIndex(1).setItemName("MusicDisc" + curDisc).setMaxStackSize(64).setFull3D();
+            newDisc = new ItemMineTraxRecord(discID, songFilename, songAuthor, songTitle).setIconIndex(songGFXID).setItemName("MusicDisc" + curDisc).setMaxStackSize(64).setFull3D();
 
 
             chestGenStuffs.registerChestGenHooks(newDisc, 0, 2, 5);
