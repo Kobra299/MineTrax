@@ -34,5 +34,6 @@ public class ClientProxyMineTrax extends CommonProxyMineTrax {
     @Override
     public void registerRenderStuffs() {
         MinecraftForgeClient.preloadTexture("MineTrax/gfx/discs.png");
+        MinecraftForgeClient.preloadTexture("MineTrax/gfx/blocks.png");
     }
 }

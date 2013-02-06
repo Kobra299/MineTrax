@@ -6,12 +6,15 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import java.io.File;
 import java.io.IOException;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
 
 public final class MineTraxAlbumMaker {
 
-    public int numberOfDiscs;
     int arrayDisc[];
+    public int numberOfDiscs;
     public static Item newDisc;
     public String songAuthor;
     public String songTitle;
@@ -21,17 +24,9 @@ public final class MineTraxAlbumMaker {
 
     /**
      * Loads the albums Notes: This method will forever be named doStuffs in
-     * memory of DarkSnake's old conventions that were riddled through this mod.
+     * memory of DarkSnake's innovative conventions that were implemented
+     * through this mod.
      *
-     * [Note from DarkSnake: I initially intended to make it so we load multiple
-     * albums, but I kinda scrapped the idea... if anyone's up for the job, then
-     * go ahead! :)]
-     *
-     * [Note from DarkSnake, again: Stuffs is my convention. Also, it's not old.
-     * Suck it, Flaeme ♥] Please do not merge the album config file with the
-     * mod's config file!
-     *
-     * @param config
      * @throws IOException
      */
     public void doStuffs() throws IOException {
@@ -39,8 +34,6 @@ public final class MineTraxAlbumMaker {
         albumConfigFile.load();
 
         numberOfDiscs = Integer.parseInt(albumConfigFile.get("General", "NumberOfDiscs", 10).value);
-
-
 
         arrayDisc = new int[numberOfDiscs];
         for (int curDisc = 0; curDisc < arrayDisc.length; curDisc++) {
@@ -52,7 +45,8 @@ public final class MineTraxAlbumMaker {
             songFilename = albumConfigFile.get(curDiscStr, "SongFilename", "None").value;
             songGFXID = Integer.parseInt(albumConfigFile.get(curDiscStr, "SongGFXID", 1).value);
 
-            newDisc = new ItemMineTraxRecord(discID, songFilename, songAuthor, songTitle).setIconIndex(1).setItemName("MusicDisc" + curDisc);
+            newDisc = new ItemMineTraxRecord(discID, songFilename, songAuthor, songTitle).setIconIndex(1).setItemName("MusicDisc" + curDisc).setMaxStackSize(64).setFull3D();
+            chestGenStuffs.registerChestGenHooks(newDisc, 0, 2, 5);
             GameRegistry.registerItem(newDisc, "MusicDisc" + curDiscStr);
             LanguageRegistry.addName(newDisc, "Music Disc");
         }

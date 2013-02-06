@@ -33,6 +33,7 @@ public class ItemMineTraxRecord extends ItemRecord {
         this.songTitle = songTitle;
         this.setCreativeTab(CreativeTabs.tabMisc);
         recordMap.put(recordFileName, this);
+
     }
 
     @SideOnly(Side.CLIENT)
