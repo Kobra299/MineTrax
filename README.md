@@ -8,7 +8,7 @@ Custom music discs are defined in a config file and are automatically added to t
 
 
 /config/MineTrax_album.cfg:
-
+This is an example of what could be your FIRST song:
     0 {
         S:SongAuthor=C418
         S:SongFilename=hal3
@@ -16,7 +16,9 @@ Custom music discs are defined in a config file and are automatically added to t
         S:SongTitle=Haggstrom
     }
 
-In the "general" part of the config, you can add or remove discs w/ numberOfDiscs=
+
+In the "general" part of the album config (/config/MineTrax_album.cfg), you can add or remove discs w/ numberOfDiscs=
+Let's say you have set the music disc 0, 1 and 2, you will want to modify numberOfDiscs to 3 (0 being the first, 1 the second, 2 the third)
 
     Remember:
         -LET THE GAME RUN ONCE TO CREATE THE ALBUM AND THE MOD'S CONFIG FILE
