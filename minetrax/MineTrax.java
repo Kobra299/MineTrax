@@ -20,29 +20,26 @@ public class MineTrax {
     public static CommonProxyMineTrax proxyCommon;
     public static MineTraxAlbumMaker mineTraxAlbumMaker = new MineTraxAlbumMaker();
     public Configuration configFile;
-    public Configuration albumConfigFile;
 
     @PreInit
     public void preInit(FMLPreInitializationEvent event) throws IOException {
 
         configFile = new Configuration(new File("config/MineTrax.cfg"));
         configFile.load();
-        loadConfig(configFile);
+        writeAndSaveConfig(configFile);
 
-        albumConfigFile = new Configuration(new File("config/MineTrax_album.cfg"));
-        albumConfigFile.load();
-        loadConfig(albumConfigFile);
+
     }
 
     @Init
     public void load(FMLInitializationEvent event) throws IOException {
         proxyCommon.registerEverything();
-        mineTraxAlbumMaker.doStuffs(albumConfigFile);
+        mineTraxAlbumMaker.doStuffs();
         MineTraxItems.init();
         MineTraxBlocks.init();
     }
 
-    public void loadConfig(Configuration configFile) {
+    public void writeAndSaveConfig(Configuration configFile) {
         //IDs Stuffs
         DataProxyMineTrax.discStartID = Integer.parseInt(configFile.get("General", "DiscStartID", 15000).value);
         //AlbumStuffs

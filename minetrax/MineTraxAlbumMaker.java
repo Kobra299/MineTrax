@@ -3,6 +3,7 @@ package minetrax;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import java.io.File;
 import java.io.IOException;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
@@ -16,6 +17,7 @@ public final class MineTraxAlbumMaker {
     public String songTitle;
     public String songFilename;
     public int songGFXID;
+    public Configuration albumConfigFile;
 
     /**
      * Loads the albums Notes: This method will forever be named doStuffs in
@@ -26,33 +28,35 @@ public final class MineTraxAlbumMaker {
      * go ahead! :)]
      *
      * [Note from DarkSnake, again: Stuffs is my convention. Also, it's not old.
-     * Suck it, Flaeme <3]
-     *
-     *
-     *
-
+     * Suck it, Flaeme ♥] Please do not merge the album config file with the
+     * mod's config file!
      *
      * @param config
      * @throws IOException
      */
-    public void doStuffs(Configuration config) throws IOException {
-        numberOfDiscs = Integer.parseInt(config.get("General", "NumberOfDiscs", 10).value);
+    public void doStuffs() throws IOException {
+        albumConfigFile = new Configuration(new File("config/MineTrax_album.cfg"));
+        albumConfigFile.load();
+
+        numberOfDiscs = Integer.parseInt(albumConfigFile.get("General", "NumberOfDiscs", 10).value);
+
+
 
         arrayDisc = new int[numberOfDiscs];
         for (int curDisc = 0; curDisc < arrayDisc.length; curDisc++) {
             arrayDisc[curDisc] = curDisc;
             int discID = arrayDisc[curDisc] + DataProxyMineTrax.discStartID;
             String curDiscStr = Integer.toString(curDisc);
-            songAuthor = config.get(curDiscStr, "SongAuthor", "None").value;
-            songTitle = config.get(curDiscStr, "SongTitle", "None").value;
-            songFilename = config.get(curDiscStr, "SongFilename", "None").value;
-            songGFXID = Integer.parseInt(config.get(curDiscStr, "SongGFXID", 1).value);
+            songAuthor = albumConfigFile.get(curDiscStr, "SongAuthor", "None").value;
+            songTitle = albumConfigFile.get(curDiscStr, "SongTitle", "None").value;
+            songFilename = albumConfigFile.get(curDiscStr, "SongFilename", "None").value;
+            songGFXID = Integer.parseInt(albumConfigFile.get(curDiscStr, "SongGFXID", 1).value);
 
             newDisc = new ItemMineTraxRecord(discID, songFilename, songAuthor, songTitle).setIconIndex(1).setItemName("MusicDisc" + curDisc);
             GameRegistry.registerItem(newDisc, "MusicDisc" + curDiscStr);
             LanguageRegistry.addName(newDisc, "Music Disc");
         }
 
-        config.save();
+        albumConfigFile.save();
     }
 }
