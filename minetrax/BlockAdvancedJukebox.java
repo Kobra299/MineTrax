@@ -12,7 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class BlockAdvancedJukebox extends BlockContainer {
-//Clank's (wonderful) W.I.P. Advanced Jukebox block! :o
+//Clank's (wonderful) W.I.P. Advanced Jukebox block! :og
 
     protected BlockAdvancedJukebox(int par1, int par2) {
         super(par1, par2, Material.rock);
