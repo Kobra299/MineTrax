@@ -10,6 +10,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.client.MinecraftForgeClient;
 
 public class BlockAdvancedJukebox extends BlockContainer {
 //Clank's (wonderful) W.I.P. Advanced Jukebox block! :o
@@ -20,6 +21,7 @@ public class BlockAdvancedJukebox extends BlockContainer {
         this.disableStats();
         this.setRequiresSelfNotify();
         this.setCreativeTab(CreativeTabs.tabDecorations);
+        MinecraftForgeClient.preloadTexture("/minetrax/gfx/blocks.png");
 
     }
 
@@ -27,7 +29,6 @@ public class BlockAdvancedJukebox extends BlockContainer {
     public String getTextureFile() {
         return "/minetrax/gfx/blocks.png";
     }
-
     /* In blocks.png: Image with Index 0 = Bottom, 1 = Top, etc...
      * 0=Bottom
      * 1=Top
@@ -44,17 +45,16 @@ public class BlockAdvancedJukebox extends BlockContainer {
             case 1:
                 return 1;
             case 2:
-                return 2;
+                return 0;
             case 3:
-                return 3;
+                return 0;
             case 4:
-                return 4;
+                return 0;
             case 5:
-                return 5;
+                return 0;
             default:
                 return 0;
         }
-
     }
 
     @Override
