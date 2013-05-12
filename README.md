@@ -5,8 +5,7 @@ A custom music discs mod for Minecraft.
 
 Custom music discs are defined in a config file and are automatically added to the game.
 
-Do not redistribute this mod freely, only redristribute it with copyclank's, find him on irc, permission.
-
+THIS MOD IS COVERED BY THE MINECRAFT MOD PUBLIC LICENSE (MMPL) FOUND IN THE LICENSE.TXT (ADDITIONALLY FOUND HERE: http://www.mod-buildcraft.com/MMPL-1.0.txt)
 
 /config/MineTrax_album.cfg:
 This is an example of what could be your FIRST song:
@@ -29,4 +28,4 @@ Let's say you have set the music disc 0, 1 and 2, you will want to modify number
         -If, for example, you set numberOfDisc to 3, discs from 3 and up won't load! (Like said before, The first disc is 0!)
         -Everything supports spaces in the names!
         
--Meow
+-Moo
