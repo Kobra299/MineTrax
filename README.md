@@ -2,6 +2,7 @@ MineTrax
 ========
 
 Пластинки прописываются в mMineTrax.cfg. Сами ogg файлы в папку assets/records/
+
 0 {
     S:SongAuthor=100StepsAhead
     S:SongFilename=100StepsAhead
