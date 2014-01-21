@@ -1,31 +1,14 @@
 MineTrax
 ========
 
-A custom music discs mod for Minecraft.
+Пластинки прописываются в mMineTrax.cfg. Сами ogg файлы в папку assets/records/100StepsAhead.ogg
+0 {
+    S:SongAuthor=100StepsAhead
+    S:SongFilename=100StepsAhead
+    S:SongTitle=
+}
 
-Custom music discs are defined in a config file and are automatically added to the game.
-
-THIS MOD IS COVERED BY THE MINECRAFT MOD PUBLIC LICENSE (MMPL) FOUND IN THE LICENSE.TXT (ADDITIONALLY FOUND HERE: http://www.mod-buildcraft.com/MMPL-1.0.txt)
-
-/config/MineTrax_album.cfg:
-This is an example of what could be your FIRST song:
-
-    0 {
-        S:SongAuthor=C418
-        S:SongFilename=hal3
-        I:SongGFXID=1
-        S:SongTitle=Haggstrom
-    }
-
-In the "general" part of the album config (/config/MineTrax_album.cfg), you can add or remove discs w/ numberOfDiscs=
-Let's say you have set the music disc 0, 1 and 2, you will want to modify numberOfDiscs to 3 (0 being the first, 1 the second, 2 the third)
-
-    Remember:
-        -LET THE GAME RUN ONCE TO CREATE THE ALBUM AND THE MOD'S CONFIG FILE
-        -PUT SONGS IN OGG FORMAT IN \resources\mod\streaming !!
-        -Discs will load even if they are set to nothing!
-        -Discs are from 0 to (numberOfDisc - 1)
-        -If, for example, you set numberOfDisc to 3, discs from 3 and up won't load! (Like said before, The first disc is 0!)
-        -Everything supports spaces in the names!
-        
--Moo
+general {
+    I:DiscStartID=15000
+    I:NumberOfDiscs=1
+}
