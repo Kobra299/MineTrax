@@ -47,6 +47,7 @@ public class MineTrax
       newDisc = new ItemMineTraxRecord(discID, this.songFilename, this.songAuthor, this.songTitle).setUnlocalizedName("MusicDisc" + curDisc).setMaxStackSize(1).setFull3D().setTextureName("disc");
 
       GameRegistry.registerItem(newDisc, "MusicDisc" + curDiscStr);
+      LanguageRegistry.addName(newDisc, "Music Disc");
     }
 
     config.save();
