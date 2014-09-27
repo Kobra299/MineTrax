@@ -1,0 +1,10 @@
+{
+    "records.None": {
+        "category": "record",
+        "sounds": [
+            {
+                "name": "records/None",
+                "stream": true
+            }]
+    }
+}
