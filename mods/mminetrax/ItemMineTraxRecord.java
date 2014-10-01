@@ -21,7 +21,7 @@ public class ItemMineTraxRecord extends ItemRecord
   public final String songAuthor;
   public final String songTitle;
 
-  protected ItemMineTraxRecord(int par1, String recordFileName, String songAuthor, String songTitle)
+  protected ItemMineTraxRecord(String recordFileName, String songAuthor, String songTitle)
   {
     super(recordFileName);
     this.recordFileName = recordFileName;

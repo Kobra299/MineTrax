@@ -5,10 +5,15 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import java.io.IOException;
+
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemRecord;
+import net.minecraft.util.RegistryNamespaced;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
@@ -21,10 +26,12 @@ public class MineTrax
   public String songAuthor;
   public String songTitle;
   public String songFilename;
+  
 
   @SidedProxy(clientSide="mods.mminetrax.ClientProxyMineTrax", serverSide="mods.mminetrax.CommonProxyMineTrax")
   public static CommonProxyMineTrax proxyCommon = new CommonProxyMineTrax();
   public Configuration configFile;
+  public static final RegistryNamespaced itemRegistry = GameData.getItemRegistry();
 
   @Mod.EventHandler
   public void preInit(FMLPreInitializationEvent event)
@@ -42,11 +49,9 @@ public class MineTrax
       String curDiscStr = Integer.toString(curDisc);
       this.songAuthor = config.get(curDiscStr, "SongAuthor", "None").getString();
       this.songTitle = config.get(curDiscStr, "SongTitle", "None").getString();
-      this.songFilename = config.get(curDiscStr, "SongFilename", "None").getString();
-
-      newDisc = new ItemMineTraxRecord(discID, this.songFilename, this.songAuthor, this.songTitle).setUnlocalizedName("MusicDisc" + curDisc).setMaxStackSize(1).setFull3D().setTextureName("mminetrax:disc");
-
-      GameRegistry.registerItem(newDisc, "MusicDisc" + curDiscStr);
+      this.songFilename = config.get(curDiscStr, "SongFilename", "None").getString(); 
+    newDisc = new ItemMineTraxRecord(this.songFilename, this.songAuthor, this.songTitle).setUnlocalizedName("MusicDisc" + curDisc).setMaxStackSize(1).setFull3D().setTextureName("mminetrax:disc");
+    itemRegistry.addObject(discID, "record"+curDisc, newDisc);
       LanguageRegistry.addName(newDisc, "Music Disc");
     }
 
