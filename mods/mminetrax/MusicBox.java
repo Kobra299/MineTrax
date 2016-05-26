@@ -14,7 +14,7 @@ public class MusicBox extends Item {
 	    public static Item Box;
 	    
 	    public static void init() {
-	    	Box = new MusicBox().setUnlocalizedName("MusicBox").setTextureName("mminetrax:disc").setCreativeTab(MineTrax.tabmusicdisc);
+	    	Box = new MusicBox().setUnlocalizedName("MusicBox").setTextureName("mminetrax:box").setCreativeTab(MineTrax.tabmusicdisc);
 	        GameRegistry.registerItem(Box, Box.getUnlocalizedName());
 	        LanguageRegistry.addName(Box, "Music Box");
 	    }
