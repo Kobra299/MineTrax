@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xxx",
+        "xax",
+        "xxx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        "a":
+        {
+            "item": "minecraft:flint"
+        }
+    },
+    "result":
+    {
+        "item": "mminetrax:musicbox",
+        "count": 1
+    }
+}
