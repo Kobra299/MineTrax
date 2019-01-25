@@ -15,20 +15,18 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMineTraxRecord extends ItemRecord {
-	public final String songAuthor;
-	public final String songTitle;
-	protected ItemMineTraxRecord(String curDiscStr, String songAuthor, String songTitle, SoundEvent soundIn) {
+	public String songTitle;
+	protected ItemMineTraxRecord(String songTitle, SoundEvent soundIn) {
 		super(songTitle, soundIn);
 		this.setUnlocalizedName(songTitle);
-		this.setRegistryName(curDiscStr+songTitle);
+		this.setRegistryName(songTitle);
 		this.setCreativeTab(MineTrax.tabmusicdisc);
-		this.songAuthor = songAuthor;
 		this.songTitle = songTitle;
 	}
 
     @SideOnly(Side.CLIENT)
     public String getRecordNameLocal()
     {
-        return this.songAuthor + " - " + this.songTitle;
+        return this.songTitle;
     }
 }
