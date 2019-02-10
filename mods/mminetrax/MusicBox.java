@@ -23,7 +23,7 @@ public class MusicBox extends Item {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 		Random ran = new Random();
-		int x = ran.nextInt(MineTrax.items.size() - 1);
+		int x = ran.nextInt(MineTrax.items.size());
 		playerIn.inventory.setInventorySlotContents(playerIn.inventory.currentItem,
 				new ItemStack(MineTrax.items.get(x), 1, 0));
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
