@@ -1,0 +1,10 @@
+{
+    "records.none": {
+        "category": "record",
+        "sounds": [
+            {
+                "name": "mminetrax:records/none",
+                "stream": true
+            }]
+    }
+}
